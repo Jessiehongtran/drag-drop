@@ -1,0 +1,23 @@
+.board {
+
+    display: flex;
+
+    .tolearn, .totry, .topractice {
+
+        width: 30%;
+        margin-right: 20px;
+        margin-left: 20px;
+
+        .title {
+            border: 1px solid grey;
+            padding: 10px;
+            background-color: yellow;
+        }
+
+        .task{
+            padding: 10px;
+            border: 1px solid grey;
+            margin-top: 10px;
+        }
+    }
+}
