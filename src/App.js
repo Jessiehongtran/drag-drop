@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>To dos</h1>
+      <h1>Programming Todo Drag and Drop</h1>
       <Board />
     </div>
   );

@@ -17,7 +17,10 @@ export default class Board extends React.Component {
                 {id: 9, name: 'React', category: "practice"},
                 {id: 10, name: 'Node.js', category: "practice"},
                 {id: 11, name: 'Python', category: "practice"},
-            ]
+            ],
+            bgcolorlearn: "#D0CDEF",
+            bgcolortry: "#D0CDEF",
+            bgcolorpractice: "#D0CDEF"
         }
 
     }
@@ -27,9 +30,26 @@ export default class Board extends React.Component {
         e.dataTransfer.setData("id", id)
     }
 
-    onDragOver(e){
+    onDragOver(e, place){
         e.preventDefault(); 
-       
+        if (place ==="learn"){
+            this.setState({
+                ...this.state,
+                bgcolorlearn: "#DAD8D5"
+            })
+        }
+        else if (place ==="try"){
+            this.setState({
+                ...this.state,
+                bgcolortry: "#DAD8D5"
+            })
+        }
+        else if (place ==="practice"){
+            this.setState({
+                ...this.state,
+                bgcolorpractice: "#DAD8D5"
+            })
+        }
     }
 
     onDrop(e, category){
@@ -47,6 +67,7 @@ export default class Board extends React.Component {
             ...this.state,
             tasks
         })
+
         
         
     }   
@@ -79,24 +100,27 @@ export default class Board extends React.Component {
             <div className="board">
                 <div 
                     className="tolearn" 
-                    onDragOver={(e) => this.onDragOver(e)}
+                    onDragOver={(e) => this.onDragOver(e, "learn")}
                     onDrop={(e) => {this.onDrop(e, "learn")}}
+                    style={{backgroundColor: this.state.bgcolorlearn}}
                 >
                     <div className="title"> to learn</div>
                     {tasks.learn}
                 </div>
                 <div 
                     className="totry"
-                    onDragOver={(e) => this.onDragOver(e)}
+                    onDragOver={(e) => this.onDragOver(e, "try")}
                     onDrop={(e) => {this.onDrop(e, "try")}} 
+                    style={{backgroundColor: this.state.bgcolortry}}
                 >
                     <div className="title"> to try</div>
                     {tasks.try}
                 </div>
                 <div 
                     className="topractice"
-                    onDragOver={(e) => this.onDragOver(e)}
+                    onDragOver={(e) => this.onDragOver(e, "practice")}
                     onDrop={(e) => {this.onDrop(e, "practice")}}
+                    style={{backgroundColor: this.state.bgcolorpractice}}
                 >
                     <div className="title"> to practice</div>
                     {tasks.practice}
